@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import CoreMotion
 
 struct Card {
-    var label = "", punches = 0
+    var label = "", punches = 0, id = ""
 }
 
-class MasterViewController: UICollectionViewController {
+class MasterViewController: UICollectionViewController, PunchCardDelegate {
 
-    var objects = Card[]()
+    var objects = Dictionary<String, Card>()
     var client: Firebase
 
     init(coder aDecoder: NSCoder!) {
         client = Firebase(url: "https://punch-cards.firebaseio.com/cards")
+
         super.init(coder: aDecoder)
     }
 
@@ -32,16 +34,24 @@ class MasterViewController: UICollectionViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-        let observer: (FDataSnapshot!) -> Void = { snapshot in
+//        let observer: (FDataSnapshot!, String!) -> Void = { snapshot, name in
+//        }
+
+        client.observeEventType(FEventTypeChildAdded, withBlock: { snapshot in
             NSLog("value: \(snapshot.value)")
             let cardHash = snapshot.value as NSDictionary
-            let card = Card(label: cardHash["label"] as String, punches: cardHash["punches"] as Int)
-            self.objects.append(card)
+            let card = Card(label: cardHash["label"] as String, punches: cardHash["punches"] as Int, id: snapshot.name)
+            self.objects[card.id] = card
             self.collectionView.reloadData()
-        }
-        client.observeEventType(FEventTypeChildAdded, withBlock: observer)
+        })
 
-        client.childByAppendingPath("cards")
+        client.observeEventType(FEventTypeChildChanged, withBlock: { snapshot in
+            NSLog("value: \(snapshot.value), \(snapshot.name)")
+            let cardHash = snapshot.value as NSDictionary
+            let card = Card(label: cardHash["label"] as String, punches: cardHash["punches"] as Int, id: snapshot.name)
+            self.objects[card.id] = card
+            self.collectionView.reloadData()
+        })
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
@@ -57,10 +67,23 @@ class MasterViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        let cell : PlainCardCell = collectionView.dequeueReusableCellWithReuseIdentifier("plain-card", forIndexPath: indexPath) as PlainCardCell
-        let card = self.objects[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("plain-card", forIndexPath: indexPath) as PlainCardCell
+        cell.setupStyles()
+        let card = Array(self.objects.values)[indexPath.row]
+
         cell.label.text = card.label
+        cell.punches.text = String(card.punches)
+        cell.punchDelegate = self
+
         return cell
+    }
+
+    func punchedCardInCell(cell: PlainCardCell) {
+        let indexPath = self.collectionView.indexPathForCell(cell)
+        let card = Array(self.objects.values)[indexPath.row]
+        let cardRef = client.childByAppendingPath("\(card.id)/punches")
+        cardRef.setValue(card.punches + 1)
+        NSLog("Punched \"\(card.label)\"!");
     }
 
     // #pragma mark - Segues

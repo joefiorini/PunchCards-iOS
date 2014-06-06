@@ -20,6 +20,9 @@
 		D8457746193D7DC100627D78 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457745193D7DC100627D78 /* CFNetwork.framework */; };
 		D8457748193D7DC800627D78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457747193D7DC800627D78 /* Security.framework */; };
 		D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457749193D7DCF00627D78 /* SystemConfiguration.framework */; };
+		D8E73F11193E4A7A00BE8691 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E73F10193E4A7A00BE8691 /* Foundation.framework */; };
+		D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */; };
+		D8E73F15193E7D9300BE8691 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E73F14193E7D9200BE8691 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		D8457745193D7DC100627D78 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D8457747193D7DC800627D78 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8457749193D7DCF00627D78 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D8E73F10193E4A7A00BE8691 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchGestureRecognizer.swift; sourceTree = "<group>"; };
+		D8E73F14193E7D9200BE8691 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		D8E7CE30193D90E4007D7A79 /* Iteration.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Iteration.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E73F15193E7D9300BE8691 /* CoreMotion.framework in Frameworks */,
+				D8E73F11193E4A7A00BE8691 /* Foundation.framework in Frameworks */,
 				D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */,
 				D8457748193D7DC800627D78 /* Security.framework in Frameworks */,
 				D8457746193D7DC100627D78 /* CFNetwork.framework in Frameworks */,
@@ -109,6 +117,7 @@
 				D829BE41193D665A006F3C69 /* Images.xcassets */,
 				D829BE36193D665A006F3C69 /* Supporting Files */,
 				D839A134193E01BB008247DE /* PlainCardCell.swift */,
+				D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */,
 			);
 			path = PunchCards;
 			sourceTree = "<group>";
@@ -141,6 +150,8 @@
 		D845774B193D805F00627D78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8E73F14193E7D9200BE8691 /* CoreMotion.framework */,
+				D8E73F10193E4A7A00BE8691 /* Foundation.framework */,
 				D8457749193D7DCF00627D78 /* SystemConfiguration.framework */,
 				D8457747193D7DC800627D78 /* Security.framework */,
 				D8457745193D7DC100627D78 /* CFNetwork.framework */,
@@ -251,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D839A135193E01BB008247DE /* PlainCardCell.swift in Sources */,
+				D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */,
 				D829BE3D193D665A006F3C69 /* DetailViewController.swift in Sources */,
 				D829BE3B193D665A006F3C69 /* MasterViewController.swift in Sources */,
 				D829BE39193D665A006F3C69 /* AppDelegate.swift in Sources */,
@@ -376,12 +388,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joseph Fiorini (47LD8LSEQ6)";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/joe/Downloads,
 				);
 				INFOPLIST_FILE = PunchCards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -396,12 +410,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joseph Fiorini (47LD8LSEQ6)";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/joe/Downloads,
 				);
 				INFOPLIST_FILE = PunchCards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

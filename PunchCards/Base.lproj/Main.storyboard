@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -48,11 +49,39 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-Vq-H1i">
+                                            <rect key="frame" x="10" y="94" width="30" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="Gew-RZ-QyD"/>
+                                                <constraint firstAttribute="width" constant="30" id="M74-ml-r8l"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be8-7n-lO5">
+                                            <rect key="frame" x="200" y="70" width="24" height="49"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="be8-7n-lO5" secondAttribute="height" multiplier="83:170" id="HVz-gH-cK9"/>
+                                                <constraint firstAttribute="height" constant="49" id="N6x-MC-glg"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="Punching Bag">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="leading" secondItem="LSW-G7-94u" secondAttribute="leading" constant="10" id="AkK-T0-S8g"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nch-Vq-H1i" secondAttribute="bottom" constant="10" id="UJg-WH-lwW"/>
+                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="bottom" secondItem="be8-7n-lO5" secondAttribute="bottom" constant="-5" id="V7I-dF-6iT"/>
+                                    <constraint firstAttribute="trailing" secondItem="be8-7n-lO5" secondAttribute="trailing" constant="6" id="kSn-ej-TWX"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="label" destination="uE7-A9-ppz" id="2Dk-Kb-N0y"/>
+                                    <outlet property="punchButton" destination="be8-7n-lO5" id="llz-eR-dFh"/>
+                                    <outlet property="punches" destination="Nch-Vq-H1i" id="qSW-zz-y4o"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -74,7 +103,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVv-Ir-5DP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="64"/>
+            <point key="canvasLocation" x="612" y="69"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -114,4 +143,7 @@
             <point key="canvasLocation" x="1208" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Punching Bag" width="85" height="171"/>
+    </resources>
 </document>
