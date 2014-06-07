@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 func color(red: Int, green: Int, blue: Int) -> UIColor {
-    return UIColor(red: (Float(red) / 255.0), green: (Float(green) / 255.0), blue: (Float(blue) / 255.0), alpha: 1)
+//    return UIColor(red: (Float(red) / 255.0), green: (Float(green) / 255.0), blue: (Float(blue) / 255.0), alpha: 1)
+    return UIColor(red: (Double(red) / 255.0), green: (Double(green) / 255.0), blue: (Double(blue) / 255.0), alpha: 1)
 }
 
 struct AppColors {

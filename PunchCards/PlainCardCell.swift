@@ -10,6 +10,8 @@ import UIKit
 
 protocol PunchCardDelegate {
     func punchedCardInCell(cell: PlainCardCell)
+    func deleteCardInCell(cell: PlainCardCell)
+    func editCardInCell(cell: PlainCardCell)
 }
 
 class PlainCardCell: UICollectionViewCell {
@@ -29,4 +31,24 @@ class PlainCardCell: UICollectionViewCell {
         NSLog("card was punched")
         punchDelegate?.punchedCardInCell(self)
     }
+
+    override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
+        NSLog("action: \(NSStringFromSelector(action))")
+        switch(action) {
+        case "requestedEdit:forCell:", "requestedDelete:forCell:":
+            return true;
+        default:
+            return false
+        }
+    }
+
+    func requestedDelete(sender: AnyObject!, forCell cell: UICollectionViewCell) {
+        punchDelegate?.deleteCardInCell(self)
+    }
+
+    func requestedEdit(sender: AnyObject!, forCell cell: UICollectionViewCell) {
+        punchDelegate?.editCardInCell(self)
+    }
+
+
 }

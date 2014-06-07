@@ -23,6 +23,7 @@
 		D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334019425D43007D81D7 /* CustomNavigationController.swift */; };
 		D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334219425DA8007D81D7 /* AppStyles.swift */; };
 		D8D33345194266B2007D81D7 /* CardListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */; };
+		D8D33349194391EC007D81D7 /* CardFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D33348194391EC007D81D7 /* CardFormViewController.swift */; };
 		D8E73F11193E4A7A00BE8691 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E73F10193E4A7A00BE8691 /* Foundation.framework */; };
 		D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */; };
 		D8E73F15193E7D9300BE8691 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E73F14193E7D9200BE8691 /* CoreMotion.framework */; };
@@ -60,6 +61,7 @@
 		D8D3334019425D43007D81D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		D8D3334219425DA8007D81D7 /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D8D33348194391EC007D81D7 /* CardFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFormViewController.swift; sourceTree = "<group>"; };
 		D8E73F10193E4A7A00BE8691 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchGestureRecognizer.swift; sourceTree = "<group>"; };
 		D8E73F14193E7D9200BE8691 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -127,6 +129,7 @@
 				D8D3334019425D43007D81D7 /* CustomNavigationController.swift */,
 				D8D3334219425DA8007D81D7 /* AppStyles.swift */,
 				D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */,
+				D8D33348194391EC007D81D7 /* CardFormViewController.swift */,
 			);
 			path = PunchCards;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */,
 				D829BE3D193D665A006F3C69 /* DetailViewController.swift in Sources */,
 				D829BE3B193D665A006F3C69 /* MasterViewController.swift in Sources */,
+				D8D33349194391EC007D81D7 /* CardFormViewController.swift in Sources */,
 				D829BE39193D665A006F3C69 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
