@@ -5,10 +5,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Custom Navigation Controller-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
-                <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
+                <navigationController id="rS3-R9-Ivy" customClass="CustomNavigationController" customModule="PunchCards" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -27,10 +27,10 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Hr2-jZ-v7e">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FKb-z0-Gyt">
-                            <size key="itemSize" width="230" height="124"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FKb-z0-Gyt" customClass="CardListCollectionViewLayout" customModule="PunchCards" customModuleProvider="target">
+                            <size key="itemSize" width="320" height="124"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -40,32 +40,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="230" height="124"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE7-A9-ppz">
-                                            <rect key="frame" x="0.0" y="0.0" width="230" height="44"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="286" translatesAutoresizingMaskIntoConstraints="NO" id="uE7-A9-ppz">
+                                            <rect key="frame" x="14" y="6" width="286" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-Vq-H1i">
-                                            <rect key="frame" x="10" y="94" width="30" height="20"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-Vq-H1i">
+                                            <rect key="frame" x="270" y="94" width="30" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Gew-RZ-QyD"/>
                                                 <constraint firstAttribute="width" constant="30" id="M74-ml-r8l"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUNCHES" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juj-zQ-TZU">
+                                            <rect key="frame" x="218" y="75" width="82" height="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="82" id="Udd-Zt-Kba"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be8-7n-lO5">
-                                            <rect key="frame" x="200" y="70" width="24" height="49"/>
+                                            <rect key="frame" x="20" y="84" width="34" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="be8-7n-lO5" secondAttribute="height" multiplier="83:170" id="HVz-gH-cK9"/>
-                                                <constraint firstAttribute="height" constant="49" id="N6x-MC-glg"/>
+                                                <constraint firstAttribute="width" secondItem="be8-7n-lO5" secondAttribute="height" multiplier="186:164" id="HVz-gH-cK9"/>
+                                                <constraint firstAttribute="height" constant="30" id="N6x-MC-glg"/>
                                             </constraints>
-                                            <state key="normal" title="Button" image="Punching Bag">
+                                            <state key="normal" title="Button" image="Glove">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
@@ -73,11 +82,18 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="leading" secondItem="LSW-G7-94u" secondAttribute="leading" constant="10" id="AkK-T0-S8g"/>
+                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="top" secondItem="juj-zQ-TZU" secondAttribute="bottom" constant="5" id="6aK-Kh-Wgk"/>
+                                    <constraint firstItem="uE7-A9-ppz" firstAttribute="leading" secondItem="LSW-G7-94u" secondAttribute="leading" constant="14" id="6vW-Yv-4AN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nch-Vq-H1i" secondAttribute="trailing" constant="20" id="AkK-T0-S8g"/>
+                                    <constraint firstAttribute="trailing" secondItem="juj-zQ-TZU" secondAttribute="trailing" constant="20" id="JZB-IC-r2K"/>
+                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="trailing" secondItem="juj-zQ-TZU" secondAttribute="trailing" id="NFs-kY-Q48"/>
                                     <constraint firstAttribute="bottom" secondItem="Nch-Vq-H1i" secondAttribute="bottom" constant="10" id="UJg-WH-lwW"/>
-                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="bottom" secondItem="be8-7n-lO5" secondAttribute="bottom" constant="-5" id="V7I-dF-6iT"/>
-                                    <constraint firstAttribute="trailing" secondItem="be8-7n-lO5" secondAttribute="trailing" constant="6" id="kSn-ej-TWX"/>
+                                    <constraint firstItem="uE7-A9-ppz" firstAttribute="top" secondItem="LSW-G7-94u" secondAttribute="top" constant="6" id="a4I-Mh-fxt"/>
+                                    <constraint firstAttribute="trailing" secondItem="uE7-A9-ppz" secondAttribute="trailing" constant="20" id="hzU-HF-xtD"/>
+                                    <constraint firstItem="be8-7n-lO5" firstAttribute="leading" secondItem="LSW-G7-94u" secondAttribute="leading" constant="20" id="kSn-ej-TWX"/>
+                                    <constraint firstItem="Nch-Vq-H1i" firstAttribute="bottom" secondItem="be8-7n-lO5" secondAttribute="bottom" id="pJq-iu-zRt"/>
                                 </constraints>
+                                <size key="customSize" width="320" height="124"/>
                                 <connections>
                                     <outlet property="label" destination="uE7-A9-ppz" id="2Dk-Kb-N0y"/>
                                     <outlet property="punchButton" destination="be8-7n-lO5" id="llz-eR-dFh"/>
@@ -103,7 +119,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVv-Ir-5DP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="69"/>
+            <point key="canvasLocation" x="611" y="69"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -144,6 +160,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Punching Bag" width="85" height="171"/>
+        <image name="Glove" width="372" height="330"/>
     </resources>
 </document>

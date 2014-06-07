@@ -31,11 +31,8 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-//        let observer: (FDataSnapshot!, String!) -> Void = { snapshot, name in
-//        }
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         client.observeEventType(FEventTypeChildAdded, withBlock: { snapshot in
             NSLog("value: \(snapshot.value)")
@@ -62,6 +59,11 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
         return self.objects.count
     }
@@ -75,6 +77,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate {
         cell.punches.text = String(card.punches)
         cell.punchDelegate = self
 
+        NSLog("cell height: \(cell.bounds.height)")
         return cell
     }
 

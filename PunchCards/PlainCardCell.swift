@@ -20,10 +20,8 @@ class PlainCardCell: UICollectionViewCell {
     var punchDelegate : PunchCardDelegate?
 
     func setupStyles() {
-        self.layer.borderColor = UIColor.blackColor().CGColor
-        self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 3.0
-        self.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 0.91, alpha: 1).CGColor
+        self.backgroundColor = AppStyles().Colors.CardBackgroundColor
+        NSLog("image: \(punchButton.imageView.image)")
         punchButton.addTarget(self, action: "cardWasPunched:", forControlEvents: UIControlEvents.TouchUpInside)
     }
 
