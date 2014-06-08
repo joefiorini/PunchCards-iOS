@@ -68,12 +68,17 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
     override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         let card = cardAtIndex(indexPath.row)
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("plain-card", forIndexPath: indexPath) as PlainCardCell
+        let formatter = RelativeDateFormatter()
 
         cell.setupStyles()
 
         cell.label.text = card.label
         cell.punches.text = String(card.punchesCount)
         cell.punchDelegate = self
+
+        if let lastPunchDate = card.mostRecentPunch() {
+            cell.lastPunchedLabel.text = formatter.stringForObjectValue(lastPunchDate)
+        }
 
         return cell
     }

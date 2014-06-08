@@ -22,6 +22,9 @@
 		D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457749193D7DCF00627D78 /* SystemConfiguration.framework */; };
 		D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A307C19440AD600E6B1C1 /* CardsRepository.swift */; };
 		D86A30801945054F00E6B1C1 /* ISO8601Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A307F1945054F00E6B1C1 /* ISO8601Formatter.swift */; };
+		D86A308219450CDB00E6B1C1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */; };
+		D86A308419450D3F00E6B1C1 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308319450D3F00E6B1C1 /* RelativeDateFormatter.swift */; };
+		D86A308619450E5400E6B1C1 /* NSTimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308519450E5400E6B1C1 /* NSTimeIntervalExtensions.swift */; };
 		D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334019425D43007D81D7 /* CustomNavigationController.swift */; };
 		D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334219425DA8007D81D7 /* AppStyles.swift */; };
 		D8D33345194266B2007D81D7 /* CardListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */; };
@@ -62,6 +65,9 @@
 		D8457749193D7DCF00627D78 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D86A307C19440AD600E6B1C1 /* CardsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsRepository.swift; sourceTree = "<group>"; };
 		D86A307F1945054F00E6B1C1 /* ISO8601Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601Formatter.swift; sourceTree = "<group>"; };
+		D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = PunchCards/NSDateExtensions.swift; sourceTree = "<group>"; };
+		D86A308319450D3F00E6B1C1 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelativeDateFormatter.swift; path = PunchCards/RelativeDateFormatter.swift; sourceTree = "<group>"; };
+		D86A308519450E5400E6B1C1 /* NSTimeIntervalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		D8D3334019425D43007D81D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		D8D3334219425DA8007D81D7 /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				D86A307F1945054F00E6B1C1 /* ISO8601Formatter.swift */,
+				D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */,
+				D86A308319450D3F00E6B1C1 /* RelativeDateFormatter.swift */,
+				D86A308519450E5400E6B1C1 /* NSTimeIntervalExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -297,13 +306,16 @@
 				D86A30801945054F00E6B1C1 /* ISO8601Formatter.swift in Sources */,
 				D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */,
 				D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */,
+				D86A308619450E5400E6B1C1 /* NSTimeIntervalExtensions.swift in Sources */,
 				D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */,
 				D839A135193E01BB008247DE /* PlainCardCell.swift in Sources */,
 				D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */,
 				D829BE3D193D665A006F3C69 /* DetailViewController.swift in Sources */,
+				D86A308219450CDB00E6B1C1 /* NSDateExtensions.swift in Sources */,
 				D829BE3B193D665A006F3C69 /* MasterViewController.swift in Sources */,
 				D8D33349194391EC007D81D7 /* CardFormViewController.swift in Sources */,
 				D829BE39193D665A006F3C69 /* AppDelegate.swift in Sources */,
+				D86A308419450D3F00E6B1C1 /* RelativeDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

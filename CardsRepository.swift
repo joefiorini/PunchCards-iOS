@@ -8,9 +8,11 @@
 
 import Foundation
 
+typealias Punch = NSDate
+
 struct Card {
     var label = ""
-    var punches: Array<NSDate>
+    var punches: Punch[]
     var id: String?
 
     var punchesCount: Int {
@@ -22,16 +24,16 @@ struct Card {
     // TODO: Why doesn't Card() work? Should use defaults, but I get compiler errors saying
     //  parameters are missing instead
     static func defaultCard() -> Card {
-        let card = Card(label: "", punches: Array<NSDate>(), id: Optional.None)
+        let card = Card(label: "", punches: Punch[](), id: Optional.None)
         return card
     }
 
-    static func deserializePunches(serialized: String[]) -> NSDate[] {
+    static func deserializePunches(serialized: String[]) -> Punch[] {
         let formatter = ISO8601Formatter()
         return serialized.map({ return formatter.dateFromString($0) })
     }
 
-    static func serializePunches(deserialized: NSDate[]) -> String[] {
+    static func serializePunches(deserialized: Punch[]) -> String[] {
         let formatter = ISO8601Formatter()
         return deserialized.map({ formatter.stringFromDate($0) })
     }
@@ -42,8 +44,18 @@ struct Card {
 
     func addPunch() -> Card {
         var mutablePunches = punches.copy()
-        mutablePunches.append(NSDate(timeIntervalSinceNow: 0))
+        mutablePunches.append(Punch(timeIntervalSinceNow: 0))
         return Card(label: label, punches: mutablePunches, id: id)
+    }
+
+    func mostRecentPunch() -> Punch? {
+
+        if punches.isEmpty {
+            return Optional.None
+        }
+
+        let sorted : Punch[] = sort(punches, { $1 < $0 })
+        return punches[sorted.startIndex]
     }
 
     func toHash() -> Dictionary<String, AnyObject> {

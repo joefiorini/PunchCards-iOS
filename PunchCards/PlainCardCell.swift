@@ -16,24 +16,23 @@ protocol PunchCardDelegate {
 
 class PlainCardCell: UICollectionViewCell {
 
-    @IBOutlet var label : UILabel
-    @IBOutlet var punches : UILabel
-    @IBOutlet var punchButton : UIButton
+    @IBOutlet var label: UILabel
+    @IBOutlet var punches: UILabel
+    @IBOutlet var punchButton: UIButton
+    @IBOutlet var lastPunchedLabel: UILabel
+
     var punchDelegate : PunchCardDelegate?
 
     func setupStyles() {
         self.backgroundColor = AppStyles().Colors.CardBackgroundColor
-        NSLog("image: \(punchButton.imageView.image)")
         punchButton.addTarget(self, action: "cardWasPunched:", forControlEvents: UIControlEvents.TouchUpInside)
     }
 
     func cardWasPunched(sender: AnyObject!) {
-        NSLog("card was punched")
         punchDelegate?.punchedCardInCell(self)
     }
 
     override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
-        NSLog("action: \(NSStringFromSelector(action))")
         switch(action) {
         case "requestedEdit:forCell:", "requestedDelete:forCell:":
             return true;
