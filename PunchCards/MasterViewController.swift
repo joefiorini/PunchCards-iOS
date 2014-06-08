@@ -72,7 +72,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
         cell.setupStyles()
 
         cell.label.text = card.label
-        cell.punches.text = String(card.punches)
+        cell.punches.text = String(card.punchesCount)
         cell.punchDelegate = self
 
         return cell
@@ -107,7 +107,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
     }
 
     @IBAction func requestedAddCard(sender: AnyObject!) {
-        let card = Card(label: "", punches: 0, id: Optional.None)
+        let card = Card.defaultCard()
         self.showCardFormForCard(card)
     }
 

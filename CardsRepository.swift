@@ -10,19 +10,44 @@ import Foundation
 
 struct Card {
     var label = ""
-    var punches: Int = 0
+    var punches: Array<NSDate>
     var id: String?
+
+    var punchesCount: Int {
+        get {
+            return punches.count
+        }
+    }
+
+    // TODO: Why doesn't Card() work? Should use defaults, but I get compiler errors saying
+    //  parameters are missing instead
+    static func defaultCard() -> Card {
+        let card = Card(label: "", punches: Array<NSDate>(), id: Optional.None)
+        return card
+    }
+
+    static func deserializePunches(serialized: String[]) -> NSDate[] {
+        let formatter = ISO8601Formatter()
+        return serialized.map({ return formatter.dateFromString($0) })
+    }
+
+    static func serializePunches(deserialized: NSDate[]) -> String[] {
+        let formatter = ISO8601Formatter()
+        return deserialized.map({ formatter.stringFromDate($0) })
+    }
 
     func setLabel(newLabel: String) -> Card {
         return Card(label: newLabel, punches: punches, id: id)
     }
 
     func addPunch() -> Card {
-        return Card(label: label, punches: punches + 1, id: id)
+        var mutablePunches = punches.copy()
+        mutablePunches.append(NSDate(timeIntervalSinceNow: 0))
+        return Card(label: label, punches: mutablePunches, id: id)
     }
 
     func toHash() -> Dictionary<String, AnyObject> {
-        return ["label": label, "punches": punches]
+        return ["label": label, "punches": Card.serializePunches(punches)]
     }
 }
 
@@ -92,7 +117,15 @@ class CardsRepository {
     }
 
     func findCard(id: String, withDefaults defaults: NSDictionary) -> Card {
-        let card = Card(label: defaults["label"] as String, punches: defaults["punches"] as Int, id: id)
+        var punches = Array<NSDate>()
+
+        if defaults.valueForKey("punches") {
+
+            let formatter = ISO8601Formatter()
+            punches = Card.deserializePunches(defaults["punches"] as String[])
+        }
+
+        let card = Card(label: defaults["label"] as String, punches: punches, id: id)
         _cards[id] = card
         return card
     }
