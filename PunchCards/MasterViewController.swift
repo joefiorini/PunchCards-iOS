@@ -8,22 +8,13 @@
 
 import UIKit
 
-struct Card {
-    var label = "", punches = 0, id: String?
-}
-
-func defaultCard() -> Card {
-    return Card(label: "", punches: 0, id: "")
-}
-
 class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAlertViewDelegate, CardActionsDelegate {
 
-    var objects = Dictionary<String, Card>()
-    var client: Firebase
     var cardForDelete: Card?
+    var cards: CardsRepository
 
     init(coder aDecoder: NSCoder!) {
-        client = Firebase(url: "https://punch-cards.firebaseio.com/cards")
+        cards = CardsRepository()
 
         super.init(coder: aDecoder)
     }
@@ -43,21 +34,10 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
         let menuController = UIMenuController.sharedMenuController()
         menuController.menuItems = [editMenuItem, deleteMenuItem]
 
-        let valueProvided: (FDataSnapshot!) -> Void = { snapshot in
-            NSLog("value: \(snapshot.value)")
-            let cardHash = snapshot.value as NSDictionary
-            let card = Card(label: cardHash["label"] as String, punches: cardHash["punches"] as Int, id: snapshot.name)
-            self.objects[card.id!] = card
-            self.collectionView.reloadData()
-        }
-
-        client.observeEventType(FEventTypeChildAdded, withBlock: valueProvided)
-        client.observeEventType(FEventTypeChildChanged, withBlock: valueProvided)
-
-        client.observeEventType(FEventTypeChildRemoved, withBlock: { snapshot in
-            self.objects.removeValueForKey(snapshot.name)
+        cards.addObserver({ _ in
             self.collectionView.reloadData()
         })
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +51,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
     }
 
     override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
-        return self.objects.count
+        return cards.count
     }
 
     override func collectionView(collectionView: UICollectionView!, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) -> Bool {
@@ -100,8 +80,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
 
     func punchedCardInCell(cell: PlainCardCell) {
         let card = self.cardForCell(cell)
-        let cardRef = client.childByAppendingPath("\(card.id)/punches")
-        cardRef.setValue(card.punches + 1)
+        cards.addPunchToCard(card)
         NSLog("Punched \"\(card.label)\"!");
     }
 
@@ -133,7 +112,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
     }
 
     func cardAtIndex(index: Int) -> Card {
-        return Array(self.objects.values)[index]
+        return cards.findCard(index)
     }
 
     func cardForCell(cell: UICollectionViewCell) -> Card {
@@ -150,16 +129,8 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
         self.presentModalViewController(navigationController, animated: true)
     }
 
-    func saveCard(card: Card) {
-        var cardRef: Firebase
-
-        if card.id? {
-            cardRef = client.childByAppendingPath("\(card.id)")
-        } else {
-            cardRef = client.childByAutoId()
-        }
-
-        cardRef.setValue(["label": card.label, "punches": card.punches])
+    func requestedSaveCard(card: Card) {
+        cards.saveCard(card)
     }
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex:Int) {
@@ -167,8 +138,9 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
             return
         }
 
-        let cardRef = client.childByAppendingPath(cardForDelete?.id!)
-        cardRef.removeValue()
+        cards.deleteCard(cardForDelete!)
+
+        cardForDelete = nil
     }
 
 }

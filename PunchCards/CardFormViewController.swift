@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol CardActionsDelegate {
-    func saveCard(card: Card)
+    func requestedSaveCard(card: Card)
 }
 
 class CardFormViewController: UITableViewController {
@@ -37,7 +37,8 @@ class CardFormViewController: UITableViewController {
     }
 
     @IBAction func requestedSaveCard(sender: AnyObject!) {
-        delegate?.saveCard(Card(label: cardLabelField.text, punches: card.punches, id: card.id))
+        let updatedCard = card.setLabel(cardLabelField.text)
+        delegate?.requestedSaveCard(updatedCard)
         self.dismissModalViewControllerAnimated(true)
     }
 

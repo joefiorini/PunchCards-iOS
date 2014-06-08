@@ -20,6 +20,7 @@
 		D8457746193D7DC100627D78 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457745193D7DC100627D78 /* CFNetwork.framework */; };
 		D8457748193D7DC800627D78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457747193D7DC800627D78 /* Security.framework */; };
 		D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457749193D7DCF00627D78 /* SystemConfiguration.framework */; };
+		D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A307C19440AD600E6B1C1 /* CardsRepository.swift */; };
 		D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334019425D43007D81D7 /* CustomNavigationController.swift */; };
 		D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334219425DA8007D81D7 /* AppStyles.swift */; };
 		D8D33345194266B2007D81D7 /* CardListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */; };
@@ -58,6 +59,7 @@
 		D8457745193D7DC100627D78 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D8457747193D7DC800627D78 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8457749193D7DCF00627D78 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D86A307C19440AD600E6B1C1 /* CardsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsRepository.swift; sourceTree = "<group>"; };
 		D8D3334019425D43007D81D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		D8D3334219425DA8007D81D7 /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -65,7 +67,6 @@
 		D8E73F10193E4A7A00BE8691 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E73F12193E4B2000BE8691 /* PunchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchGestureRecognizer.swift; sourceTree = "<group>"; };
 		D8E73F14193E7D9200BE8691 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		D8E7CE30193D90E4007D7A79 /* Iteration.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Iteration.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		D829BE2A193D665A006F3C69 = {
 			isa = PBXGroup;
 			children = (
+				D86A307B19440AC700E6B1C1 /* Data */,
 				D845774B193D805F00627D78 /* Frameworks */,
 				D829BE35193D665A006F3C69 /* PunchCards */,
 				D829BE4A193D665A006F3C69 /* PunchCardsTests */,
@@ -121,7 +123,6 @@
 				D829BE3A193D665A006F3C69 /* MasterViewController.swift */,
 				D829BE3C193D665A006F3C69 /* DetailViewController.swift */,
 				D829BE3E193D665A006F3C69 /* Main.storyboard */,
-				D8E7CE30193D90E4007D7A79 /* Iteration.playground */,
 				D829BE41193D665A006F3C69 /* Images.xcassets */,
 				D829BE36193D665A006F3C69 /* Supporting Files */,
 				D839A134193E01BB008247DE /* PlainCardCell.swift */,
@@ -172,6 +173,14 @@
 				D829BE59193D69E8006F3C69 /* Firebase.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D86A307B19440AC700E6B1C1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D86A307C19440AD600E6B1C1 /* CardsRepository.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8D33345194266B2007D81D7 /* CardListCollectionViewLayout.swift in Sources */,
+				D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */,
 				D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */,
 				D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */,
 				D839A135193E01BB008247DE /* PlainCardCell.swift in Sources */,
