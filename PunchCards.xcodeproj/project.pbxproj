@@ -20,6 +20,8 @@
 		D8457746193D7DC100627D78 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457745193D7DC100627D78 /* CFNetwork.framework */; };
 		D8457748193D7DC800627D78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457747193D7DC800627D78 /* Security.framework */; };
 		D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8457749193D7DCF00627D78 /* SystemConfiguration.framework */; };
+		D867694E194582F100709737 /* GloveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D867694D194582F100709737 /* GloveButton.swift */; };
+		D86769501945837400709737 /* GloveButtonDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = D867694F1945837400709737 /* GloveButtonDrawing.m */; };
 		D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A307C19440AD600E6B1C1 /* CardsRepository.swift */; };
 		D86A30801945054F00E6B1C1 /* ISO8601Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A307F1945054F00E6B1C1 /* ISO8601Formatter.swift */; };
 		D86A308219450CDB00E6B1C1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */; };
@@ -67,6 +69,9 @@
 		D8457745193D7DC100627D78 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D8457747193D7DC800627D78 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8457749193D7DCF00627D78 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D867694D194582F100709737 /* GloveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GloveButton.swift; sourceTree = "<group>"; };
+		D867694F1945837400709737 /* GloveButtonDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GloveButtonDrawing.m; sourceTree = "<group>"; };
+		D86769511945838400709737 /* GloveButtonDrawing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GloveButtonDrawing.h; sourceTree = "<group>"; };
 		D86A307C19440AD600E6B1C1 /* CardsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsRepository.swift; sourceTree = "<group>"; };
 		D86A307F1945054F00E6B1C1 /* ISO8601Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601Formatter.swift; sourceTree = "<group>"; };
 		D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = PunchCards/NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -152,6 +157,9 @@
 				D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */,
 				D8D33348194391EC007D81D7 /* CardFormViewController.swift */,
 				D86A308D1945651700E6B1C1 /* SignInViewController.swift */,
+				D867694D194582F100709737 /* GloveButton.swift */,
+				D867694F1945837400709737 /* GloveButtonDrawing.m */,
+				D86769511945838400709737 /* GloveButtonDrawing.h */,
 			);
 			path = PunchCards;
 			sourceTree = "<group>";
@@ -322,6 +330,8 @@
 				D86A307D19440AD600E6B1C1 /* CardsRepository.swift in Sources */,
 				D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */,
 				D86A308619450E5400E6B1C1 /* NSTimeIntervalExtensions.swift in Sources */,
+				D867694E194582F100709737 /* GloveButton.swift in Sources */,
+				D86769501945837400709737 /* GloveButtonDrawing.m in Sources */,
 				D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */,
 				D839A135193E01BB008247DE /* PlainCardCell.swift in Sources */,
 				D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */,

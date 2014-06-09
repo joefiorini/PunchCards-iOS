@@ -156,7 +156,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be8-7n-lO5">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be8-7n-lO5" customClass="GloveButton" customModule="PunchCards" customModuleProvider="target">
                                             <rect key="frame" x="20" y="85" width="34" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="be8-7n-lO5" secondAttribute="height" multiplier="186:164" id="HVz-gH-cK9"/>
@@ -248,13 +248,18 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-zo-qd7">
-                                                    <rect key="frame" x="20" y="11" width="42" height="26"/>
+                                                    <rect key="frame" x="20" y="11" width="100" height="26"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="SG5-Xh-xW9"/>
                                                         <constraint firstAttribute="width" constant="42" id="w1c-c9-gDc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="w1c-c9-gDc"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -289,7 +294,7 @@
                 </navigationBar>
                 <navigationItem title="Title" id="oYb-MP-fvc"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="-140"/>
+            <point key="canvasLocation" x="1207" y="-141"/>
         </scene>
     </scenes>
     <resources>
