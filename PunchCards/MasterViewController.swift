@@ -10,12 +10,12 @@ import UIKit
 
 class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAlertViewDelegate, CardActionsDelegate {
 
-    var cardForDelete: Card?
+    var cardForDelete: Card
     var cards: CardsRepository
 
     init(coder aDecoder: NSCoder!) {
         cards = CardsRepository()
-
+        cardForDelete = Card.defaultCard()
         super.init(coder: aDecoder)
     }
 
@@ -143,9 +143,7 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
             return
         }
 
-        cards.deleteCard(cardForDelete!)
-
-        cardForDelete = nil
+        cards.deleteCard(cardForDelete)
     }
 
 }
