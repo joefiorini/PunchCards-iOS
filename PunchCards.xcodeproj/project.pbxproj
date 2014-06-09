@@ -25,6 +25,10 @@
 		D86A308219450CDB00E6B1C1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */; };
 		D86A308419450D3F00E6B1C1 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308319450D3F00E6B1C1 /* RelativeDateFormatter.swift */; };
 		D86A308619450E5400E6B1C1 /* NSTimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308519450E5400E6B1C1 /* NSTimeIntervalExtensions.swift */; };
+		D86A3088194557D100E6B1C1 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A3087194557D100E6B1C1 /* FirebaseSimpleLogin.framework */; };
+		D86A308A1945582300E6B1C1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A30891945582300E6B1C1 /* Accounts.framework */; };
+		D86A308C1945582B00E6B1C1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86A308B1945582B00E6B1C1 /* Social.framework */; };
+		D86A308E1945651700E6B1C1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A308D1945651700E6B1C1 /* SignInViewController.swift */; };
 		D8D3334119425D43007D81D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334019425D43007D81D7 /* CustomNavigationController.swift */; };
 		D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3334219425DA8007D81D7 /* AppStyles.swift */; };
 		D8D33345194266B2007D81D7 /* CardListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */; };
@@ -68,6 +72,10 @@
 		D86A308119450CDB00E6B1C1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = PunchCards/NSDateExtensions.swift; sourceTree = "<group>"; };
 		D86A308319450D3F00E6B1C1 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RelativeDateFormatter.swift; path = PunchCards/RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		D86A308519450E5400E6B1C1 /* NSTimeIntervalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimeIntervalExtensions.swift; sourceTree = "<group>"; };
+		D86A3087194557D100E6B1C1 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseSimpleLogin.framework; path = ../../../Downloads/FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
+		D86A30891945582300E6B1C1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		D86A308B1945582B00E6B1C1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D86A308D1945651700E6B1C1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D8D3334019425D43007D81D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		D8D3334219425DA8007D81D7 /* AppStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -82,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86A308C1945582B00E6B1C1 /* Social.framework in Frameworks */,
+				D86A308A1945582300E6B1C1 /* Accounts.framework in Frameworks */,
 				D8E73F15193E7D9300BE8691 /* CoreMotion.framework in Frameworks */,
 				D8E73F11193E4A7A00BE8691 /* Foundation.framework in Frameworks */,
 				D845774A193D7DCF00627D78 /* SystemConfiguration.framework in Frameworks */,
@@ -89,6 +99,7 @@
 				D8457746193D7DC100627D78 /* CFNetwork.framework in Frameworks */,
 				D8457744193D7DB800627D78 /* libc++.dylib in Frameworks */,
 				D8457742193D7DB100627D78 /* libicucore.dylib in Frameworks */,
+				D86A3088194557D100E6B1C1 /* FirebaseSimpleLogin.framework in Frameworks */,
 				D829BE5A193D69E8006F3C69 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +151,7 @@
 				D8D3334219425DA8007D81D7 /* AppStyles.swift */,
 				D8D33344194266B2007D81D7 /* CardListCollectionViewLayout.swift */,
 				D8D33348194391EC007D81D7 /* CardFormViewController.swift */,
+				D86A308D1945651700E6B1C1 /* SignInViewController.swift */,
 			);
 			path = PunchCards;
 			sourceTree = "<group>";
@@ -172,6 +184,9 @@
 		D845774B193D805F00627D78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D86A308B1945582B00E6B1C1 /* Social.framework */,
+				D86A30891945582300E6B1C1 /* Accounts.framework */,
+				D86A3087194557D100E6B1C1 /* FirebaseSimpleLogin.framework */,
 				D8E73F14193E7D9200BE8691 /* CoreMotion.framework */,
 				D8E73F10193E4A7A00BE8691 /* Foundation.framework */,
 				D8457749193D7DCF00627D78 /* SystemConfiguration.framework */,
@@ -310,6 +325,7 @@
 				D8D3334319425DA8007D81D7 /* AppStyles.swift in Sources */,
 				D839A135193E01BB008247DE /* PlainCardCell.swift in Sources */,
 				D8E73F13193E4B2000BE8691 /* PunchGestureRecognizer.swift in Sources */,
+				D86A308E1945651700E6B1C1 /* SignInViewController.swift in Sources */,
 				D829BE3D193D665A006F3C69 /* DetailViewController.swift in Sources */,
 				D86A308219450CDB00E6B1C1 /* NSDateExtensions.swift in Sources */,
 				D829BE3B193D665A006F3C69 /* MasterViewController.swift in Sources */,

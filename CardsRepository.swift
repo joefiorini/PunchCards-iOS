@@ -64,9 +64,20 @@ struct Card {
 }
 
 var _globalConnection: Firebase? = nil
+var _globalAuthClient: FirebaseSimpleLogin? = nil
 
 class FirebaseConnection {
     var ref: Firebase
+
+    var authClient: FirebaseSimpleLogin {
+    get {
+        if !_globalAuthClient {
+            _globalAuthClient = FirebaseSimpleLogin(ref: FirebaseConnection().ref)
+        }
+
+        return _globalAuthClient!
+    }
+    }
 
     init() {
         if !_globalConnection {
@@ -77,23 +88,28 @@ class FirebaseConnection {
     }
 }
 
-func getFirebaseRef(t: String, handler: (Firebase -> Void)) {
+func getFirebaseRef(t: String, user: FAUser?, handler: (Firebase -> Void)) {
     switch(t) {
     case "cards":
-        getFirebaseRef("root", {
-            let ref = $0.childByAppendingPath("cards")
+        getFirebaseRef("root", user, {
+            let ref = $0.childByAppendingPath("users/\(user?.userId)/cards")
+            handler(ref)
+        })
+    case "auth":
+        getFirebaseRef("root", user, {
+            let ref = $0.root.childByAppendingPath(".info/authenticated")
             handler(ref)
         })
     case "root":
         let connection = FirebaseConnection()
         handler(connection.ref)
     case "autoId":
-        getFirebaseRef("cards", {
+        getFirebaseRef("cards", user, {
             let ref = $0.childByAutoId()
             handler(ref)
         })
     default:
-        getFirebaseRef("cards", {
+        getFirebaseRef("cards", user, {
             let ref = $0.childByAppendingPath(t)
             handler(ref)
         })
@@ -103,6 +119,7 @@ func getFirebaseRef(t: String, handler: (Firebase -> Void)) {
 class CardsRepository {
 
     var _cards: Dictionary<String, Card> = [:]
+    var _currentUser: FAUser?
 
     var count: Int {
         get {
@@ -110,12 +127,23 @@ class CardsRepository {
         }
     }
 
+    init() {
+        _currentUser = Optional.None
+    }
+
+    var authClient: FirebaseSimpleLogin {
+    get {
+        let connection = FirebaseConnection()
+        return connection.authClient
+    }
+    }
+
     func removeCard(card: Card) {
         _cards.removeValueForKey(card.id!)
     }
 
     func deleteCard(card: Card) {
-        getFirebaseRef(card.id!, {
+        getFirebaseRef(card.id!, _currentUser, {
             $0.removeValue()
         })
     }
@@ -146,15 +174,19 @@ class CardsRepository {
         var cardRef: Firebase
 
         if card.id? {
-            getFirebaseRef(card.id!, { ref in
+            getFirebaseRef(card.id!, _currentUser, { ref in
                 ref.setValue(card.toHash())
             })
         } else {
-            getFirebaseRef("autoId", { ref in
+            getFirebaseRef("autoId", _currentUser, { ref in
                 ref.setValue(card.toHash())
             })
         }
 
+    }
+
+    func setCurrentUser(user: FAUser) {
+        _currentUser = user
     }
 
     func addPunchToCard(card: Card) {
@@ -162,8 +194,21 @@ class CardsRepository {
         saveCard(newCard)
     }
 
+    func addAuthObserver(authObserver: (() -> Void)) {
+        getFirebaseRef("auth", _currentUser, { ref in
+            let observer: (FDataSnapshot! -> Void) = { snapshot in
+                let isAuthenticated = snapshot.value as Bool
+                if isAuthenticated {
+                    authObserver()
+                }
+            }
+
+            ref.observeEventType(FEventTypeValue, withBlock: observer)
+        })
+    }
+
     func addObserver(cardObserver: (Card -> Void)) {
-        getFirebaseRef("cards", { ref in
+        getFirebaseRef("cards", _currentUser, { ref in
             let changeObserver: (FDataSnapshot! -> Void) = { snapshot in
                 let card = self.findCard(snapshot.name, withDefaults: snapshot.value as NSDictionary)
                 cardObserver(card)

@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 protocol CardActionsDelegate {
-    func requestedSaveCard(card: Card)
+    func requestedSaveCardWithLabel(updatedLabel: String)
 }
 
 class CardFormViewController: UITableViewController {
 
-    var card: Card!
+    var cardLabel: String?
     var delegate: CardActionsDelegate?
 
     @IBOutlet var cardLabelField: UITextField
@@ -29,7 +29,7 @@ class CardFormViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
-        cardLabelField.text = card.label
+        cardLabelField.text = cardLabel
     }
 
     override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
@@ -37,8 +37,7 @@ class CardFormViewController: UITableViewController {
     }
 
     @IBAction func requestedSaveCard(sender: AnyObject!) {
-        let updatedCard = card.setLabel(cardLabelField.text)
-        delegate?.requestedSaveCard(updatedCard)
+        delegate?.requestedSaveCardWithLabel(cardLabelField.text)
         self.dismissModalViewControllerAnimated(true)
     }
 

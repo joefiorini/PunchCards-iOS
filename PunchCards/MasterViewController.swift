@@ -1,4 +1,4 @@
-//
+
 //  MasterViewController.swift
 //  PunchCards
 //
@@ -8,14 +8,16 @@
 
 import UIKit
 
-class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAlertViewDelegate, CardActionsDelegate {
+class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAlertViewDelegate, CardActionsDelegate, SignInDelegate {
 
     var cardForDelete: Card
+    var cardForEdit: Card
     var cards: CardsRepository
 
     init(coder aDecoder: NSCoder!) {
         cards = CardsRepository()
         cardForDelete = Card.defaultCard()
+        cardForEdit = Card.defaultCard()
         super.init(coder: aDecoder)
     }
 
@@ -27,17 +29,60 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
         let editMenuItem = UIMenuItem(title: "Edit", action: "requestedEdit:forCell:")
         let deleteMenuItem = UIMenuItem(title: "Delete", action: "requestedDelete:forCell:")
         let menuController = UIMenuController.sharedMenuController()
         menuController.menuItems = [editMenuItem, deleteMenuItem]
 
+        performSignIn()
+    }
+
+    func listenForCardChanges() {
         cards.addObserver({ _ in
             self.collectionView.reloadData()
         })
+    }
 
+    func setUserSignedIn() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: UIBarButtonItemStyle.Plain, target: self, action: "requestedSignOut:")
+    }
+
+    func requestedSignOut(sender: AnyObject!) {
+        cards.authClient.logout()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign In", style: UIBarButtonItemStyle.Plain, target: self, action: "requestedSignIn:")
+    }
+
+    func requestedSignIn(sender: AnyObject!) {
+        performSignIn()
+    }
+
+    func performSignIn() {
+        cards.authClient.checkAuthStatusWithBlock({ error, userResult in
+            if error {
+                NSLog("error checking status: \(error)")
+                return;
+            }
+
+            if let user = userResult {
+                self.cards.setCurrentUser(user)
+                self.setUserSignedIn()
+                self.listenForCardChanges()
+            } else {
+                let signInViewController = self.storyboard.instantiateViewControllerWithIdentifier("signIn") as SignInViewController
+                signInViewController.authClient = self.cards.authClient
+                self.presentModalViewController(signInViewController, animated: true)
+                self.cards.addAuthObserver({
+                    self.setUserSignedIn()
+                    self.listenForCardChanges()
+                    self.collectionView.reloadData()
+                })
+            }
+        })
+    }
+
+
+    func setCurrentUser(user: FAUser) {
+        cards.setCurrentUser(user)
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,15 +172,20 @@ class MasterViewController: UICollectionViewController, PunchCardDelegate, UIAle
 
     func showCardFormForCard(card: Card) {
         let destination = self.storyboard.instantiateViewControllerWithIdentifier("New Card Modal") as CardFormViewController
-        destination.card = card
+        destination.cardLabel = card.label
         destination.delegate = self
+
+        // Was orginally setting card on destination, but that raised exception, possibly swift bug;
+        //  try again in a future release
+        cardForEdit = card
 
         let navigationController = UINavigationController(rootViewController: destination)
         self.presentModalViewController(navigationController, animated: true)
     }
 
-    func requestedSaveCard(card: Card) {
-        cards.saveCard(card)
+    func requestedSaveCardWithLabel(updatedLabel: String) {
+        let updatedCard = cardForEdit.setLabel(updatedLabel)
+        cards.saveCard(updatedCard)
     }
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex:Int) {
